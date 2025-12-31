@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.media.MediaView?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.foodorderingjdbcproject.MenuController"
+            stylesheets="@styles.css"
+            styleClass="root">
+    <top>
+        <VBox spacing="15" styleClass="panel-background" style="-fx-padding: 15; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 5, 0, 0, 5);">
+            <HBox alignment="CENTER_LEFT" spacing="15">
+                <MediaView fx:id="menuChefAnimationView" fitHeight="60" fitWidth="60" preserveRatio="true"/>
+                <Label text="Food Menu" styleClass="header-label"/>
+                <TextField fx:id="searchField" promptText="Search food..." HBox.hgrow="ALWAYS" styleClass="text-field"/>
+            </HBox>
+            <HBox spacing="10" alignment="CENTER_LEFT" style="-fx-padding: 5 0 0 0;">
+                <Label text="Filter by: " style="-fx-font-weight: bold; -fx-text-fill: #212121;"/>
+                <fx:define>
+                    <ToggleGroup fx:id="categoryGroup"/>
+                </fx:define>
+                <ToggleButton text="All" onAction="#filterCategory" toggleGroup="$categoryGroup" selected="true" styleClass="filter-button"/>
+                <ToggleButton text="Breakfast" onAction="#filterCategory" toggleGroup="$categoryGroup" styleClass="filter-button"/>
+                <ToggleButton text="Lunch" onAction="#filterCategory" toggleGroup="$categoryGroup" styleClass="filter-button"/>
+                <ToggleButton text="Dinner" onAction="#filterCategory" toggleGroup="$categoryGroup" styleClass="filter-button"/>
+                <ToggleButton text="Snack" onAction="#filterCategory" toggleGroup="$categoryGroup" styleClass="filter-button"/>
+                <ToggleButton text="Dessert" onAction="#filterCategory" toggleGroup="$categoryGroup" styleClass="filter-button"/>
+                <ToggleButton text="Juice" onAction="#filterCategory" toggleGroup="$categoryGroup" styleClass="filter-button"/>
+                <ToggleButton text="Soft Drink" onAction="#filterCategory" toggleGroup="$categoryGroup" styleClass="filter-button"/>
+                <ToggleButton text="Hot Drink" onAction="#filterCategory" toggleGroup="$categoryGroup" styleClass="filter-button"/>
+                <ToggleButton text="Alcohol" onAction="#filterCategory" toggleGroup="$categoryGroup" styleClass="filter-button"/>
+            </HBox>
+            <HBox spacing="10" alignment="CENTER_LEFT" style="-fx-padding: 10 0 0 0;">
+                <Label text="Dietary Status: " style="-fx-font-weight: bold; -fx-text-fill: #212121;"/>
+                <fx:define>
+                    <ToggleGroup fx:id="dietaryGroup"/>
+                </fx:define>
+                <ToggleButton text="Any" toggleGroup="$dietaryGroup" onAction="#filterDietary" selected="true" styleClass="filter-button"/>
+                <ToggleButton text="Fasting" toggleGroup="$dietaryGroup" onAction="#filterDietary" styleClass="filter-button"/>
+                <ToggleButton text="Non-Fasting" toggleGroup="$dietaryGroup" onAction="#filterDietary" styleClass="filter-button"/>
+            </HBox>
+        </VBox>
+    </top>
+    <center>
+        <ScrollPane fitToWidth="true" styleClass="scroll-pane">
+            <FlowPane fx:id="foodContainer" hgap="20" vgap="20" style="-fx-padding: 20;"/>
+        </ScrollPane>
+    </center>
+    <right>
+        <VBox spacing="15" styleClass="order-section" style="-fx-padding: 20; -fx-min-width: 280;">
+            <Label text="Your Order" styleClass="sub-header-label"/>
+            <ScrollPane fitToWidth="true" VBox.vgrow="ALWAYS" styleClass="scroll-pane">
+                <VBox fx:id="orderList" spacing="10"/>
+            </ScrollPane>
+            <VBox spacing="10" style="-fx-border-color: #e0e0e0; -fx-border-width: 1 0 0 0; -fx-padding: 10 0 0 0;">
+
+                <VBox spacing="8">
+                    <Label text="Order Type:" style="-fx-font-weight: bold;"/>
+                    <HBox spacing="10">
+                        <fx:define>
+                            <ToggleGroup fx:id="orderTypeGroup"/>
+                        </fx:define>
+                        <ToggleButton text="Dine-In" toggleGroup="$orderTypeGroup" styleClass="filter-button" selected="true"/>
+                        <ToggleButton text="Take-Away" toggleGroup="$orderTypeGroup" styleClass="filter-button"/>
+                    </HBox>
+                </VBox>
+
+                <VBox fx:id="tableNumberBox" spacing="5" managed="false" visible="false">
+                    <Label text="Table Number:" style="-fx-font-weight: bold;"/>
+                    <TextField fx:id="tableNumberField" promptText="e.g., 5"/>
+                </VBox>
+
+                <HBox spacing="10" alignment="CENTER_LEFT">
+                    <Label text="Total: " style="-fx-font-weight: bold; -fx-font-size: 16px;"/>
+                    <Label fx:id="totalPriceLabel" text="0.00 ETB" styleClass="price-label"/>
+                </HBox>
+                <Button text="Place Order" onAction="#placeOrder" maxWidth="Infinity" styleClass="button" style="-fx-font-size: 14px;"/>
+            </VBox>
+        </VBox>
+    </right>
+    <bottom>
+        <HBox alignment="CENTER_LEFT" spacing="10" style="-fx-padding: 10;">
+            <Button onAction="#onBackClick" styleClass="button" style="-fx-background-color: #BDBDBD; -fx-padding: 8 12;">
+                <graphic>
+                    <ImageView fitHeight="24" fitWidth="24" preserveRatio="true">
+                        <Image url="https://cdn-icons-png.flaticon.com/512/93/93634.png"/>
+                    </ImageView>
+                </graphic>
+            </Button>
+        </HBox>
+    </bottom>
+</BorderPane>

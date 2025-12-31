@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.media.MediaView?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<StackPane xmlns:fx="http://javafx.com/fxml"
+           fx:controller="com.example.foodorderingjdbcproject.HelloController"
+           stylesheets="@styles.css"
+           styleClass="home-container"
+           fx:id="rootPane">
+
+    <!-- Background Image View -->
+    <ImageView fx:id="backgroundImage" fitHeight="800" fitWidth="1200" preserveRatio="false"/>
+
+    <!-- Dark Overlay for Readability -->
+    <VBox styleClass="hero-overlay" alignment="CENTER"/>
+
+    <!-- Content -->
+    <VBox alignment="CENTER" spacing="30.0" maxWidth="800">
+        <padding>
+            <Insets bottom="40.0" left="40.0" right="40.0" top="40.0"/>
+        </padding>
+
+        <!-- Title with Animation -->
+        <HBox alignment="CENTER" spacing="20">
+             <!-- Original Animation without effects -->
+             <MediaView fx:id="chefAnimationView" fitHeight="200" fitWidth="200" preserveRatio="true"/>
+
+             <Label text="Food Ordering App" styleClass="hero-text" wrapText="true" textAlignment="CENTER"/>
+        </HBox>
+
+        <Label text="Delicious Food, Delivered To You." styleClass="hero-text" style="-fx-font-size: 40px;" wrapText="true" textAlignment="CENTER"/>
+
+        <Label text="Experience the best Ethiopian and International cuisine."
+               styleClass="hero-subtext" wrapText="true" textAlignment="CENTER"/>
+
+        <Label text="Fresh, hot, and tasty!"
+               styleClass="hero-subtext" wrapText="true" textAlignment="CENTER"/>
+        <Button text="Order Now" onAction="#onOrderNowClick" styleClass="button"
+                style="-fx-font-size: 20px; -fx-padding: 15 50; -fx-background-radius: 30; -fx-background-color: #CC5500; -fx-text-fill: white;"/>
+    </VBox>
+</StackPane>

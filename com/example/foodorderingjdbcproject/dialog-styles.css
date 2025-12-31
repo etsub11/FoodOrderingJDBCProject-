@@ -1,0 +1,48 @@
+/* dialog-styles.css */
+
+.dialog-pane {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #4CAF50; /* Green border */
+    -fx-border-width: 2px;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.4), 15, 0, 0, 0);
+}
+
+.dialog-pane .label {
+    -fx-font-family: "Poppins", sans-serif;
+}
+
+.dialog-pane .header-panel {
+    -fx-background-color: #4CAF50; /* Green header */
+    -fx-background-radius: 20px 20px 0 0;
+    -fx-padding: 20px;
+}
+
+.dialog-pane .header-panel .label {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+    -fx-wrap-text: true;
+}
+
+.dialog-pane .content.label {
+    -fx-font-size: 16px;
+    -fx-text-fill: #333333;
+    -fx-padding: 20px;
+    -fx-wrap-text: true;
+}
+
+.dialog-pane .button-bar .button{
+    -fx-background-color: #ef6c00; /* Orange button */
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 20px;
+    -fx-cursor: hand;
+    -fx-font-size: 14px;
+    -fx-padding: 10px 30px;
+}
+
+.dialog-pane .button-bar .button:hover {
+    -fx-background-color: #e65100; /* Darker orange on hover */
+}
